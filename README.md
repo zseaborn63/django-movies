@@ -73,7 +73,7 @@ and then either look at [django-nose](https://pypi.python.org/pypi/django-nose) 
 
 ### Normal Mode
 
-Take [the script I wrote to turn MovieLens 1M data into fixtures](https://github.com/tiy-gvl-python/django-movies/blob/convert_ml_1m_data.py)
+Take [the script Clinton wrote to turn MovieLens 1M data into fixtures](https://github.com/tiy-gvl-python/django-movies/blob/convert_ml_1m_data.py)
 and modify it to turn your CSV data into fixtures, then load those fixtures
 with `python manage.py loaddata <fixture_file>`.
 
