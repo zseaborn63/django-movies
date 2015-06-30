@@ -62,8 +62,7 @@ top movies by rating.
 For `rater`, you'll want the average rating that rater gave to a movie, and
 the ability to get the top movies that rater has not seen. You will also want
 to be able to find the Euclidean distance between that rater and another using
-their movie ratings. (See [our command-line version of this](https://github.com/tiyd-python-2015-05/movie-recommendations)
-to see more.)
+their movie ratings.
 
 In order to do this, you'll want to [read up on the model layer of Django](https://docs.djangoproject.com/en/1.8/#the-model-layer).
 
@@ -94,8 +93,5 @@ In your Django application, create views and templates for:
 
 ### Hard Mode
 
-Try to get your recommendation algorithms from the command-line version of this
-working. If you can get it working, show on each user page a list of users
-most like them, and also a list of movies they might like based off those
-users.
-
+Try to build a recommendation algorithm for users in pure python outside of your
+django project. We will be putting it into our django project at some point.
