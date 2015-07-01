@@ -26,6 +26,14 @@ After completing this assignment, you should be able to:
 * Use basic HTML
 * Extrapolate from basic HTML how to create templates
 
+### Night 3
+
+* Distinguish when to use GET vs POST
+* Create forms
+* Understand registration and login
+* Make use of Django's built in authentication forms and helper
+* Extend user objects via OneToOneFields
+
 ## Details
 
 ### Deliverables
@@ -94,3 +102,26 @@ In your Django application, create views and templates for:
 
 Try to build a recommendation algorithm for users in pure python outside of your
 django project. We will be putting it into our django project at some point.
+
+## Night 3
+
+### Normal Mode
+
+Link your Rater model to the built-in User model via a OneToOneField. Create
+a username, email, and password for all raters.
+
+Add registration, login, and logout to your application.
+
+Add the ability for a user to rate a movie they have not previously rated from
+the movie page.
+
+### Hard Mode
+
+Add the ability for a user to edit a rating they've made.
+
+When logged in, customize pages for the user. For example, on the page that
+shows the top 20 movies rated, show the user which ones they've rated.
+
+Add a personal page for each user that only they can see. It should have all
+their ratings, allow them to edit or delete those ratings, and also show
+them the top 20 movies they have not rated.
