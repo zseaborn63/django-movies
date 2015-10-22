@@ -8,31 +8,20 @@ Create an interface in Django to the [MovieLens dataset][movielens].
 
 After completing this assignment, you should be able to:
 
-### Night 1
-
 * Create a new Django application
 * Translate real-world data to Django models
 * Explain what a database is
 * Explain what a model is
 * Use the Django admin
 * Structure the Django admin to reflect your data
-
-### Night 2
-
 * Create regular expressions to map URLs to views
 * Explain what a view is
 * Explain what a template is
 * Design simple views
 * Use basic HTML
 * Extrapolate from basic HTML how to create templates
-
-### Night 3
-
 * Distinguish when to use GET vs POST
 * Create forms
-* Understand registration and login
-* Make use of Django's built in authentication forms and helper
-* Extend user objects via OneToOneFields
 
 ## Details
 
@@ -43,12 +32,12 @@ After completing this assignment, you should be able to:
   * a `README.md` file
   * a Django project called `movieratings`
 
-## Night 1
+## Part 1
 
 ### Normal Mode
 
-Choose a dataset from the [MovieLens dataset options][movielens] and read its
-README.
+Choose the 100k dataset from the [MovieLens dataset options][movielens] and read its
+[README](http://files.grouplens.org/datasets/movielens/ml-100k-README.txt).
 
 Create a new Django application in the `movieratings` project to hold your
 models.
@@ -59,7 +48,7 @@ can contain the data from your dataset.
 
 Create Django admin pages for your models.
 
-[movielens]: http://grouplens.org/datasets/movielens/
+[movielens]: http://files.grouplens.org/datasets/movielens/ml-100k.zip
 
 ### Hard Mode
 
@@ -77,7 +66,7 @@ In order to do this, you'll want to [read up on the model layer of Django](https
 Try to test these new methods. Read [Testing in Django](https://docs.djangoproject.com/en/1.8/topics/testing/)
 and then either look at [django-nose](https://pypi.python.org/pypi/django-nose) or [pytest-django](https://pytest-django.readthedocs.org/en/latest/).
 
-## Night 2
+## Part 2
 
 ### Normal Mode
 
@@ -103,25 +92,8 @@ In your Django application, create views and templates for:
 Try to build a recommendation algorithm for users in pure python outside of your
 django project. We will be putting it into our django project at some point.
 
-## Night 3
+## Part 3
 
 ### Normal Mode
 
-Link your Rater model to the built-in User model via a OneToOneField. Create
-a username, email, and password for all raters.
-
-Add registration, login, and logout to your application.
-
-Add the ability for a user to rate a movie they have not previously rated from
-the movie page.
-
-### Hard Mode
-
-Add the ability for a user to edit a rating they've made.
-
-When logged in, customize pages for the user. For example, on the page that
-shows the top 20 movies rated, show the user which ones they've rated.
-
-Add a personal page for each user that only they can see. It should have all
-their ratings, allow them to edit or delete those ratings, and also show
-them the top 20 movies they have not rated.
+Add the ability to create a review for an existing movie.
