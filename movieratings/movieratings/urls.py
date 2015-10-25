@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from movie_app.views import home_view, HomeView, default_view
+from movie_app.views import  default_view, MovieDetails, MovieList
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', HomeView.as_view(), name='home')
+    url(r'^$', default_view, name='default'),
+    url(r'^movies/$', MovieList.as_view(), name='movie_list'),
+    url(r'^movie_details', MovieDetails.as_view(), name='cbv_movie_detail'),
 ]

@@ -3,13 +3,11 @@
 {% block content %}
 
 <div class="row">
-    {% for movie in Movie.objects.all %}
+    {% for movie in movie_list %}
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">{{ movie.title }}</h3>
-                </div>
-                <div class="panel-body">
+                    <h3 class="panel-title"><a href="{% url 'movie_detail' movie.id %}">{{ movie.title }}</a></h3>
                 </div>
             </div>
         </div>
