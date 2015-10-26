@@ -1,11 +1,9 @@
 from django.db import models
 
 # Create your models here.
-from django.db.models import Avg
-from numpy import split
+
 
 class RatingManager(models.Manager):
-
 
     @property
     def usable_movies_for_top_20(self):
@@ -17,11 +15,11 @@ class RatingManager(models.Manager):
 
     @property
     def top_20(self):
-        return sorted(self.usable_movies_for_top_20, key=lambda x: x.new_avg_rating , reverse=True)[:20]
+        return sorted(self.usable_movies_for_top_20, key=lambda x: x.new_avg_rating, reverse=True)[:20]
 
     @property
     def top_movies(self):
-        return sorted(self.usable_movies_for_top_20, key=lambda x: x.new_avg_rating , reverse=True)[:100]
+        return sorted(self.usable_movies_for_top_20, key=lambda x: x.new_avg_rating, reverse=True)[:100]
 
 
 class Movie(models.Model):
@@ -30,15 +28,12 @@ class Movie(models.Model):
 
     objects = RatingManager()
 
-
     @property
     def new_avg_rating(self):
         rating_sum = sum(self.rating_set.all().values_list('rating', flat=True))
         rating_count = self.rating_set.all().values_list('rating', flat=True).count()
         average_rating = rating_sum / rating_count
         return average_rating
-
-
 
     def __str__(self):
         return self.title
@@ -63,21 +58,19 @@ class Rater(models.Model):
         for movie in Movie.objects.top_movies:
             if movie not in self.rating_set.all():
                 not_seen.append(movie)
-        best_not_seen = not_seen[:5]
+        best_not_seen = not_seen[:10]
         return best_not_seen
-
-
 
     def __str__(self):
         return str(self.id)
 
 
 class Rating(models.Model):
-    rating = models.IntegerField(choices=[(1, "Awful"), (2, "Not Bad"),  (3, "Good"), (4, "Pretty Good"), (5, "Amazing")])
+    rating = models.IntegerField(choices=[
+        (1, "Awful"), (2, "Not Bad"),  (3, "Good"), (4, "Pretty Good"), (5, "Amazing")
+    ])
     movie_rated = models.ForeignKey(Movie)
     rater = models.ForeignKey(Rater)
-
-
 
     def __str__(self):
         return str(self.rating)

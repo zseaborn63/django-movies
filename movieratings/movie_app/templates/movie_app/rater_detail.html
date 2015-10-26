@@ -9,7 +9,7 @@
         <div class="col-md-12">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h2 class="panel-title">User# {{ object.id }}</h2>
+                    <h2>User# {{ object.id }}</h2>
                 </div>
                 <div class="panel-body">
                     <h3>Age: {{ object.age }}</h3>
@@ -19,7 +19,7 @@
                     <h3>Average Movie Rating: {{ object.avg_movie_rating }}</h3>
                     <div class="panel panel-success">
                         <div class="panel-heading">
-                            <h3>Movies Not Yet Seen</h3>
+                            <h3>Top Rated Movies Not Yet Seen</h3>
                         </div>
                         <div class="panel-body">
                             {% for movie in object.top_movies_not_seen %}
