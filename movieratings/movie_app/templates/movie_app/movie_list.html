@@ -3,13 +3,7 @@
 {% block content %}
 
     <h1>Movie List</h1>
-    <button class='button button-default'>
-        <a href="{% url 'rater_list' %}">Rater's List</a>
-    </button>
 
-    <button class='button button-default'>
-        <a href="{% url 'default' %}">Home</a>
-    </button>
 <div class="row">
     {% for movie in movie_list %}
         <div class="col-md-12">
