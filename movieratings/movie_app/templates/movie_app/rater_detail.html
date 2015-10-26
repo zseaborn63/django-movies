@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ object.id }}</h3>
+            </div>
+            <div class="panel-body">
+                <h4>Gender: {{ object.gender }}</h4>
+                <h4>Age: {{ object.age }}</h4>
+                <h4>Occupation: {{ object.occupation }}</h4>
+                <h4>Zip Code: {{ object.zip }}</h4>
+                <h4>Movies Rated:
+                   {% for movie in object.movies_rated %}
+                     <a href="{% url 'movie_detail' rater.id %}">{{ movie }}: {{ movie.rating }}</a>
+                    {% endfor %}
+                </h4>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

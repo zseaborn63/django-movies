@@ -15,3 +15,9 @@ class MovieList(ListView):
 
 class MovieDetail(DetailView):
     model = Movie
+    
+class RaterList(ListView):
+    model = Rater
+    
+class RaterDetail(DetailView):
+    model = Rater
