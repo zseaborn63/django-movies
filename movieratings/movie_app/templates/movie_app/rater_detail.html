@@ -17,6 +17,17 @@
                 <h4>Age: {{ object.age }}</h4>
                 <h4>Occupation: {{ object.occupation }}</h4>
                 <h4>Zip Code: {{ object.zip }}</h4>
+                <h4>Average Movie Rating: {{ object.avg_movie_rating|floatformat:4 }}</h4>
+                <h4>Top Movies Not Seen Yet:
+                    {% for movie in object.top_movies_not_seen %}
+                        <p></p>
+                    <p>
+                       <a href="{% url 'movie_detail' movie.id %}">
+                           {{ movie.title }}
+                       <a/>
+                    </p>
+                    {% endfor %}
+                </h4>
                 <h4>Movies Rated:
                     <p></p>
                    {% for movie in object.rating_set.all %}
