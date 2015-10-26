@@ -1,45 +1,45 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
     <h1>Rater {{ object.id }} Details</h1>
 
 
     <br>
     <div class="row">
-    <div class="col-md-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">User# {{ object.id }}</h3>
-            </div>
-            <div class="panel-body">
-                <h4>Gender: {{ object.gender }}</h4>
-                <h4>Age: {{ object.age }}</h4>
-                <h4>Occupation: {{ object.occupation }}</h4>
-                <h4>Zip Code: {{ object.zip }}</h4>
-                <h4>Average Movie Rating: {{ object.avg_movie_rating|floatformat:4 }}</h4>
-                <h4>Top Movies Not Seen Yet:
-                    {% for movie in object.top_movies_not_seen %}
-                        <p></p>
-                    <p>
-                       <a href="{% url 'movie_detail' movie.id %}">
-                           {{ movie.title }}
-                       <a/>
-                    </p>
-                    {% endfor %}
-                </h4>
-                <h4>Movies Rated:
-                    <p></p>
-                   {% for movie in object.rating_set.all %}
-                    <p>
-                        <a href="{% url 'movie_detail' movie.movie_rated.id %}">
-                            {{ movie.movie_rated.title }}: {{ movie.rating }}
-                        </a>
-                    </p>
-                    {% endfor %}
-                </h4>
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h2 class="panel-title">User# {{ object.id }}</h2>
+                </div>
+                <div class="panel-body">
+                    <h3>Age: {{ object.age }}</h3>
+                    <h3>Gender: {{ object.gender }}</h3>
+                    <h3>Occupation: {{ object.occupation }}</h3>
+                    <h3>Zip Code: {{ object.zip }}</h3>
+                    <h3>Average Movie Rating: {{ object.avg_movie_rating }}</h3>
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <h3>Movies Not Yet Seen</h3>
+                        </div>
+                        <div class="panel-body">
+                            {% for movie in object.top_movies_not_seen %}
+                                <a href="{% url 'movie_detail' movie.id%}"><h4>{{ movie.title }}</h4></a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <h3>Movies Rated</h3>
+                        </div>
+                        <div class="panel-body">
+                            {% for movie in object.rating_set.all %}
+                                <a href="{% url 'movie_detail' movie.id %}"><h4>{{ movie.movie_rated.title }}: {{ movie.rating }}</h4></a>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 {% endblock %}

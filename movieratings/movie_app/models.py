@@ -63,7 +63,8 @@ class Rater(models.Model):
         for movie in Movie.objects.top_movies:
             if movie not in self.rating_set.all():
                 not_seen.append(movie)
-        return not_seen[:5]
+        best_not_seen = not_seen[:5]
+        return best_not_seen
 
 
 
