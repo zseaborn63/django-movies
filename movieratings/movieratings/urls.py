@@ -15,11 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from movie_app.views import  default_view, MovieDetails, MovieList
+from movie_app.views import  default_view, MovieDetail, MovieList
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', default_view, name='default'),
     url(r'^movies/$', MovieList.as_view(), name='movie_list'),
-    url(r'^movie_details', MovieDetails.as_view(), name='cbv_movie_detail'),
+    url(r'^movies/(?P<pk>\d+)/$', MovieDetail.as_view(), name='movie_detail'),
 ]
