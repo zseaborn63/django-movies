@@ -7,7 +7,8 @@ from movie_app.models import Movie, Rater, Rating
 
 
 def default_view(request):
-    return render_to_response(template_name='base.html', context={})
+    final_list = Movie.the_top_20
+    return render_to_response(template_name='base.html', context={"top_20": print(final_list)})
 
 class MovieList(ListView):
     model = Movie

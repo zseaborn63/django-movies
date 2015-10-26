@@ -9,11 +9,22 @@
 <body>
 <div class="container">
 
-    <h2>
-        Welcome to Zach's Movies!
-    </h2>
+
 
     {% block content %}
+        <h2>
+            Welcome to Zach's Movies!
+        </h2>
+        <button class='button button-default'>
+            <a href="{% url 'rater_list' %}">Rater's List</a>
+        </button>
+        <button class='button button-default'>
+            <a href="{% url 'movie_list' %}">Movies List</a>
+            <br>
+        </button>
+
+        {{ top_20 }}
+
     {% endblock %}
 </div>
 </body>

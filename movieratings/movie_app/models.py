@@ -15,20 +15,16 @@ class Movie(models.Model):
 
     avg_rating = property(make_avg_rating)
 
-    def make_raters(self):
-        raters = []
-        for rating in self.rating_set.all():
-            raters.append(rating.rater.id)
-        raters_string = str(raters)
-        return raters_string
+    def make_top_20(self):
+        avg_list = []
+        for movie in self.rating_set.all():
+            movie_rating = self.avg_rating
+            avg_list.append((movie_rating, movie))
+        avg_list = avg_list.sort()
+        final_list = avg_list[0:20]
+        return avg_list
 
-    raters = property(make_raters)
-
-    def num_raters(self):
-        raters_num = count(self.raters)
-        return raters_num
-
-    total_raters = property(num_raters)
+    the_top_20 = property(make_top_20)
 
     def __str__(self):
         return self.title
@@ -39,21 +35,6 @@ class Rater(models.Model):
     zip = models.CharField(max_length=15)
     occupation = models.CharField(max_length=100)
     gender = models.CharField(max_length=10)
-
-    def make_movies(self):
-        movies = []
-        for movie in self.rating_set.all():
-            movies.append(movie.movie_rated.title)
-        return movies
-
-    movies_rated = property(make_movies)
-
-    def get_movie_id(self):
-        movie_ids = []
-        for movie in self.movies_rated:
-            x = movie.id
-            movie_ids.append(x)
-        return movie_ids
 
 
     def __str__(self):

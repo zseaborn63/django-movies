@@ -2,12 +2,25 @@
 
 {% block content %}
 
+    <h1>Rater's List</h1>
+    <button class='button button-default'>
+        <a href="{% url 'movie_list' %}">Movies List</a>
+    </button>
+
+    <button class='button button-default'>
+        <a href="{% url 'default' %}">Home</a>
+    </button>
+    <br>
     <div class="row">
     {% for rater in rater_list %}
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><a href="{% url 'rater_detail' rater.id %}">{{ rater.id }}</a></h3>
+                    <h3 class="panel-title">
+                        <a href="{% url 'rater_detail' rater.id %}">
+                            User# {{ rater.id }}
+                        </a>
+                    </h3>
                 </div>
             </div>
         </div>

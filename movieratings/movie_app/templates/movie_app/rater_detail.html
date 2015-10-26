@@ -2,11 +2,20 @@
 
 {% block content %}
 
+    <h1>Rater {{ object.id }} Details</h1>
+
+    <button class='button button-default'>
+        <a href="{% url 'movie_list' %}">Movies List</a>
+    </button>
+    <button class='button button-default'>
+        <a href="{% url 'default' %}">Home</a>
+    </button>
+    <br>
     <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">{{ object.id }}</h3>
+                <h3 class="panel-title">User# {{ object.id }}</h3>
             </div>
             <div class="panel-body">
                 <h4>Gender: {{ object.gender }}</h4>
@@ -14,8 +23,13 @@
                 <h4>Occupation: {{ object.occupation }}</h4>
                 <h4>Zip Code: {{ object.zip }}</h4>
                 <h4>Movies Rated:
-                   {% for movie in object.movies_rated %}
-                     <a href="{% url 'movie_detail' rater.id %}">{{ movie }}: {{ movie.rating }}</a>
+                    <p></p>
+                   {% for movie in object.rating_set.all %}
+                    <p>
+                        <a href="{% url 'movie_detail' movie.movie_rated.id %}">
+                            {{ movie.movie_rated.title }}: {{ movie.rating }}
+                        </a>
+                    </p>
                     {% endfor %}
                 </h4>
             </div>
